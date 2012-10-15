@@ -28,7 +28,7 @@ class cloudpassage::apt {
 
   # in case you don't have an apt update process
   exec { 'apt_update':
-    command     => 'apt-get update',
+    command     => '/usr/bin/apt-get update',
     logoutput   => on_failure,
     refreshonly => true,
   }
