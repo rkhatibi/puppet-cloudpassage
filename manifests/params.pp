@@ -1,28 +1,28 @@
 class cloudpassage::params {
 
 # (Modify only to adapt to unsupported OSes)
-  $packagename = $::osfamily ? {
+  $packagename = $::operatingsystem ? {
     default => 'cphalo',
   }
 
-  $servicename = $::osfamily ? {
+  $servicename = $::operatingsystem ? {
     default => 'cphalod',
   }
 
-  $processname = $::osfamily ? {
+  $processname = $::operatingsystem ? {
     default => 'cphalo',
   }
 
-  $hasstatus = $::osfamily ? {
-    /(?i:debian)/ => false,
-    /(?i:redhat)/ => true,
+  $hasstatus = $::operatingsystem ? {
+    /(?i:debian|ubuntu)/        => false,
+    /(?i:redhat|centos|fedora)/ => true,
   }
 
-  $configfile = $::osfamily ? {
+  $configfile = $::operatingsystem ? {
     default => '/etc/cphalo/cphalo.conf',
   }
 
-  $configdir = $::osfamily ? {
+  $configdir = $::operatingsystem ? {
     default => '/etc/cphalo',
   }
 

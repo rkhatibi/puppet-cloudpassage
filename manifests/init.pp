@@ -2,9 +2,9 @@ class cloudpassage {
 
   # if you have your own apt/yum module you can comment these out
   # I recommends puppetlabs-apt for apt
-  case $::osfamily {
-    /(?i:debian)/: { include cloudpassage::apt }
-    /(?i:redhat)/: { include cloudpassage::yum }
+  case $::operatingsystem {
+    /(?i:debian|ubuntu)/:        { include cloudpassage::apt }
+    /(?i:redhat|centos|fedora)/: { include cloudpassage::yum }
     default: {}
   }
 
