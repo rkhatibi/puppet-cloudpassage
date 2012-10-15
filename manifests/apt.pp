@@ -8,6 +8,7 @@ class cloudpassage::apt {
 
   exec { 'cloudpassage.key':
     command   => 'curl http://packages.cloudpassage.com/cloudpassage.packages.key | apt-key add -',
+    path      => '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin',
     logoutput => on_failure,
     notify    => Exec['apt_update'],
     unless    => 'grep cloudpassage /etc/apt/trusted.gpg 1>/dev/null',
@@ -29,6 +30,7 @@ class cloudpassage::apt {
   # in case you don't have an apt update process
   exec { 'apt_update':
     command     => '/usr/bin/apt-get update',
+    path        => '/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin',
     logoutput   => on_failure,
     refreshonly => true,
   }
