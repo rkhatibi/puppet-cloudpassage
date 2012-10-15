@@ -20,8 +20,8 @@ class cloudpassage::apt {
     content => template('cloudpassage/cloudpassage.list.erb'),
   }
 
-  # this assumes you have a central apt class the runs the 
-  # apt-get update only once for all updates so you don't 
+  # this assumes you have a central apt class the runs the
+  # apt-get update only once for all updates so you don't
   # have problems with apt choking during multiple updates
 
   #Class['apt::update'] -> Class['cloudpassage::install']
