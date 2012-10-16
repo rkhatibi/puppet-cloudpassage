@@ -1,5 +1,5 @@
 name 'puppet-cloudpassage'
-version '0.5.0'
+version '1.0.0'
 source 'https://github.com/rkhtibi/puppet-cloudpassage'
 author 'rdk'
 license 'Apache License 2.0'
