@@ -24,3 +24,7 @@ installs, but stops the service
 You may need to modify to use *your* apt update process
 I didn't add one because it's likely to cause more problems
 than it solves.
+
+<!---
+#CPTAGS:community-unsupported automation deployment
+-->
