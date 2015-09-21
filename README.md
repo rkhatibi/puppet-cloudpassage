@@ -27,4 +27,5 @@ than it solves.
 
 <!---
 #CPTAGS:community-unsupported automation deployment
+#TBICON:images/ruby_icon.png
 -->
