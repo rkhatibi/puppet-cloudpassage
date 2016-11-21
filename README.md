@@ -98,7 +98,7 @@ will not include --tags in the agent registration process (default set to undef)
 
 ### Module dependencies
 
-This modules uses the [puppetlabs-apt module](https://forge.puppet.com/puppetlabs/apt) for the management of the NodeSource
+This module uses the [puppetlabs-apt module](https://forge.puppet.com/puppetlabs/apt) for the management of the NodeSource
 repository.
 
 For Windows installations, this module uses the [puppet-download_file module](https://forge.puppet.com/puppet/download_file) to download the necessary installers.
