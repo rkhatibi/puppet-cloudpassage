@@ -1,12 +1,11 @@
 class cloudpassage::yum {
-
-  yumrepo{ 'cloudpassage':
+  yumrepo { 'cloudpassage':
+    baseurl  => "http://packages.cloudpassage.com/redhat/\$basearch",
     descr    => 'CloudPassage production',
-    baseurl  => "http://packages.cloudpassage.com/${cloudpassage::data::repokey}/redhat/\$basearch",
+    ensure   => $cloudpassage::repo_ensure,
     gpgcheck => 1,
-    gpgkey   => 'http://packages.cloudpassage.com/cloudpassage.packages.key'
+    gpgkey   => 'https://packages.cloudpassage.com/cloudpassage.packages.key',
   }
 
   Yumrepo['cloudpassage'] -> Class['cloudpassage::install']
-
 }
