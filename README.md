@@ -16,11 +16,11 @@ The cloudpassage module installs and configures the CloudPassage Halo agent.
 ## Usage
 
 All interaction with the cloudpassage module can be done through the main cloudpassage class.
-The `agentkey` parameter must be specified for the class to function.
+The `agent_key` parameter must be specified for the class to function.
 
 ```
 class { 'cloudpassage':
-  agentkey => 'myapikey',
+  agent_key => 'myapikey',
 }
 ```
 
