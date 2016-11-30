@@ -20,7 +20,7 @@ The `agent_key` parameter must be specified for the class to function.
 
 ```
 class { 'cloudpassage':
-  agent_key => 'myapikey',
+  agent_key => 'myagentkey',
 }
 ```
 
@@ -45,9 +45,9 @@ class { 'cloudpassage':
 
 The following parameters are available in the `cloudpassage` class:
 
-#### `apikey`
+#### `agent_key`
 
-The CloudPassage API key. This value is required.
+The CloudPassage Agent key. This value is required.
 
 #### `audit_mode`
 
