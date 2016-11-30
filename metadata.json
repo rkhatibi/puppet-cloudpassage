@@ -1,0 +1,64 @@
+{
+  "name": "cloudpassage-cloudpassage",
+  "version": "0.1.0",
+  "author": "CloudPassage",
+  "license": "Apache-2.0",
+  "summary": "Module that will manage the CloudPassage Halo Agent",
+  "source": "https://github.com/cloudpassage/puppet-cloudpassage.git",
+  "project_page": "https://github.com/cloudpassage/puppet-cloudpassage",
+  "issues_url": "https://github.com/cloudpassage/puppet-cloudpassage/issues",
+  "tags": ["windows", "linux", "cloudpassage", "halo"],
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "puppet/download_file",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs/powershell",
+      "version_requirement": ">= 2.0.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.6.0 < 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
+      "operatingsystem": "windows",
+      "operatingsystemrelease": [
+        "2012R2"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ]
+}
