@@ -15,12 +15,26 @@ The cloudpassage module installs and configures the CloudPassage Halo agent.
 
 ## Usage
 
-All interaction with the cloudpassage module can be done through the main cloudpassage class.
-The `agent_key` parameter must be specified for the class to function.
+All interaction with the cloudpassage module can be done through the main cloudpassage class in manifest. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
+
+### Example for Linux servers
 
 ```
 class { 'cloudpassage':
   agent_key => 'myagentkey',
+}
+```
+
+### Example for Windows servers 
+
+```
+class { 'cloudpassage':
+         agent_key => 'myagentkey',
+         package_file => 'cphalo-3.9.7-win64.exe',
+         package_url => 'https://production.packages.cloudpassage.com/windows/cphalo-3.9.7-win64.exe',
+         destination_dir => 'C:\\Users\Administrator\Downloads',
+         server_label => 'puppet_windows',
+         audit_mode => true
 }
 ```
 
@@ -45,9 +59,9 @@ class { 'cloudpassage':
 
 The following parameters are available in the `cloudpassage` class:
 
-#### `agent_key`
+#### `agent_key` (Required)
 
-The CloudPassage Agent key. This value is required.
+The CloudPassage Agent key.
 
 #### `audit_mode`
 
@@ -99,7 +113,7 @@ will not include --tags in the agent registration process (default set to undef)
 ### Module dependencies
 
 This module uses the [puppetlabs-apt module](https://forge.puppet.com/puppetlabs/apt) for the management of the NodeSource
-repository.
+repository, [puppetlabs-stdlib module] and [puppetlabs-powershell module]
 
 For Windows installations, this module uses the [puppet-download_file module](https://forge.puppet.com/puppet/download_file) to download the necessary installers.
 
