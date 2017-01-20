@@ -1,11 +1,11 @@
 class cloudpassage::params {
   $agent_key      = undef
-  $audit_mode     = true
+  $audit_mode     = false
   $package_ensure = 'present'
   $server_label   = undef
   $service_enable = true
   $service_ensure = true
-  $tags           = undef
+  $tag           = undef
 
   if $::kernel == 'windows' {
     $destination_dir = 'c:/tmp'

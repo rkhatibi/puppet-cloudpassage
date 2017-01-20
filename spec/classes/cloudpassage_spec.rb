@@ -4,13 +4,13 @@ describe 'cloudpassage' do
   agent_key    = "dummykey"
   audit_mode   = false
   server_label = "dummylabel"
-  tags         = "dummytag"
+  tag         = "dummytag"
 
   default_params = {
     :agent_key    => agent_key,
     :audit_mode   => audit_mode,
     :server_label => server_label,
-    :tags         => tags,
+    :tag         => tag,
   }
 
   let(:params) { default_params }
@@ -50,7 +50,7 @@ describe 'cloudpassage' do
       describe 'cloudpassage::install' do
         if os == 'Windows'
           destination_dir = "c:/tmp"
-          package_file    = "cphalo-3.7.8-win64.exe"
+          package_file    = "cphalo-3.9.7-win64.exe"
           package_url     = "https://production.packages.cloudpassage.com/windows/#{package_file}"
 
           it { should contain_download_file("Get cphalo.exe")
@@ -67,7 +67,7 @@ describe 'cloudpassage' do
               "install_options" => [
                 "/S",
                 "/agent-key=#{agent_key}",
-                "/tag=#{tags}",
+                "/tag=#{tag}",
                 "/read-only=#{audit_mode}",
               ],
               "source"          => "#{destination_dir}/#{package_file}",
@@ -82,7 +82,7 @@ describe 'cloudpassage' do
         if os != 'Windows'
           it {
             should contain_exec('initialize cloudpassage').with(
-              "command"     => "/opt/cloudpassage/bin/configure --api-key=#{agent_key} --read-only=#{audit_mode} --tag=#{tags} --server-label=#{server_label}",
+              "command"     => "/opt/cloudpassage/bin/configure --agent-key=#{agent_key} --read-only=#{audit_mode} --tag=#{tag} --server-label=#{server_label}",
               "refreshonly" => "true"
             )
           }
@@ -164,7 +164,7 @@ describe 'cloudpassage' do
           "install_options"   => [
             "/S",
             "/agent-key=#{agent_key}",
-            "/tag=#{tags}",
+            "/tag=#{tag}",
             "/read-only=#{audit_mode}",
           ],
           "source"            => "#{destination_dir}/#{package_file}",
@@ -297,9 +297,9 @@ describe 'cloudpassage' do
       it { should_not compile }
     end
 
-    context "when the 'tags' param is invalid" do
+    context "when the 'tag' param is invalid" do
       let(:params) do
-        default_params.merge(tags: 123)
+        default_params.merge(tag: 123)
       end
 
       it { should_not compile }

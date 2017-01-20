@@ -13,8 +13,8 @@
 # repo_ensure     = (Linux only) controls the apt or yum repo's "ensure" attribute
 # service_name    = the name of the service
 # server_label    = unique identifer of the VM
-# tags            = facts or values to use as tags for this node, if empty, tags will not be set
-#
+# tag            = facts or values to use as tags for this node, if empty, tags will not be set
+require 'puppet'
 class cloudpassage(
   $agent_key       = $::cloudpassage::params::agent_key,
   $audit_mode      = $::cloudpassage::params::audit_mode,
@@ -29,7 +29,7 @@ class cloudpassage(
   $service_ensure  = $::cloudpassage::params::service_ensure,
   $service_name    = $::cloudpassage::params::service_name,
   $server_label    = $::cloudpassage::params::server_label,
-  $tags            = $::cloudpassage::params::tags,
+  $tag            = $::cloudpassage::params::tag,
 ) inherits ::cloudpassage::params {
   validate_string($agent_key)
   validate_bool($audit_mode)
@@ -39,7 +39,7 @@ class cloudpassage(
   validate_bool($service_enable)
   validate_bool($service_ensure)
   validate_string($server_label)
-  validate_string($tags)
+  validate_string($tag)
 
   if $::kernel == 'Linux' {
     validate_bool($manage_repos)
