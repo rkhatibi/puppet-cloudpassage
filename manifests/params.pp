@@ -9,7 +9,7 @@ class cloudpassage::params {
 
   if $::kernel == 'windows' {
     $destination_dir = 'c:/tmp'
-    $package_file    = 'cphalo-3.7.8-win64.exe'
+    $package_file    = 'cphalo-3.9.7-win64.exe'
     $package_name    = 'CloudPassage Halo'
     $package_url     = "https://production.packages.cloudpassage.com/windows/$package_file"
     $service_name    = 'cphalo'

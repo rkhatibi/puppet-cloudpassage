@@ -14,7 +14,6 @@
 # service_name    = the name of the service
 # server_label    = unique identifer of the VM
 # tag            = facts or values to use as tags for this node, if empty, tags will not be set
-require 'puppet'
 class cloudpassage(
   $agent_key       = $::cloudpassage::params::agent_key,
   $audit_mode      = $::cloudpassage::params::audit_mode,
