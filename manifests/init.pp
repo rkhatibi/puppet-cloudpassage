@@ -9,8 +9,7 @@
 # dns             = Controls DNS resolution
 # installdir      = The directory into which to install the agent
 # manage_repos    = (Linux only) set to true by default, will add cloudpassage package repo for install
-# nostart         = Specifies that the agent should not start up after installation. By default, the agent
-starts when installation completes.
+# nostart         = Specifies that the agent should not start up after installation.
 # package_ensure  = controls the package resource's "ensure" attribute
 # package_file    = (Windows only) controls the filename of the installer EXE
 # package_name    = controls the package resource's "name" attribute
@@ -26,12 +25,12 @@ starts when installation completes.
 class cloudpassage(
   $agent_key       = $::cloudpassage::params::agent_key,
   $audit_mode      = $::cloudpassage::params::audit_mode,
-  $debug           = $::cloudpassage::params::debug
+  $debug           = $::cloudpassage::params::debug,
   $destination_dir = $::cloudpassage::params::destination_dir,
   $dns             = $::cloudpassage::params::dns,
   $installdir      = $::cloudpassage::params::installdir,
   $manage_repos    = $::cloudpassage::params::manage_repos,
-  $nostart         = $::cloudpassage::parmas::nostart,
+  $nostart         = $::cloudpassage::params::nostart,
   $package_ensure  = $::cloudpassage::params::package_ensure,
   $package_file    = $::cloudpassage::params::package_file,
   $package_name    = $::cloudpassage::params::package_name,
@@ -49,7 +48,7 @@ class cloudpassage(
   validate_string($agent_key)
   validate_bool($audit_mode)
   validate_bool($debug)
-  validate_string($dns)
+  validate_bool($dns)
   validate_bool($nostart)
   validate_string($package_ensure)
   validate_string($package_name)

@@ -16,14 +16,20 @@ class cloudpassage::install {
         "/server-label=$cloudpassage::server_label",
         "/DNS=$cloudpassage::dns",
         "/D=$cloudpassage::installdir",
-        "/NOSTART=$cloudpassage::nostart"
     ]
 
     if ($cloudpassage::debug != false) {
-      $configure_command = concat($configure, ["/debug"])
+      $debug_condition = ['/debug']
     } else {
-      $configure_command = $configure
+      $debug_condition = []
     }
+    if ($cloudpassage::nostart != false) {
+      $nostart_condition = ['/NOSTART']
+    } else {
+      $nostart_condition = []
+    }
+
+    $configure_command = concate($configure, $debug_condition, $nostart_condition)
 
     package { $cloudpassage::package_name:
       ensure            => ">=$cloudpassage::package_ensure",
