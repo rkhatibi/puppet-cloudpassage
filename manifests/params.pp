@@ -1,11 +1,16 @@
 class cloudpassage::params {
   $agent_key      = undef
   $audit_mode     = false
+  $dns            = true
+  $installdir     = undef
   $package_ensure = 'present'
+  $proxy          = undef
+  $proxy_user     = undef
+  $proxy_password = undef
   $server_label   = undef
   $service_enable = true
   $service_ensure = true
-  $tag           = undef
+  $tag            = undef
 
   if $::kernel == 'windows' {
     $destination_dir = 'c:/tmp'
