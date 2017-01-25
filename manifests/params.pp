@@ -3,7 +3,6 @@ class cloudpassage::params {
   $audit_mode     = false
   $dns            = true
   $installdir     = undef
-  $nostart        = false
   $package_ensure = 'present'
   $proxy          = undef
   $proxy_user     = undef

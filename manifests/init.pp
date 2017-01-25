@@ -28,7 +28,6 @@ class cloudpassage(
   $dns             = $::cloudpassage::params::dns,
   $installdir      = $::cloudpassage::params::installdir,
   $manage_repos    = $::cloudpassage::params::manage_repos,
-  $nostart         = $::cloudpassage::params::nostart,
   $package_ensure  = $::cloudpassage::params::package_ensure,
   $package_file    = $::cloudpassage::params::package_file,
   $package_name    = $::cloudpassage::params::package_name,
@@ -46,7 +45,6 @@ class cloudpassage(
   validate_string($agent_key)
   validate_bool($audit_mode)
   validate_bool($dns)
-  validate_bool($nostart)
   validate_string($package_ensure)
   validate_string($package_name)
   validate_string($proxy)
