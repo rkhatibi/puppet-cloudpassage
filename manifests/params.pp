@@ -1,7 +1,6 @@
 class cloudpassage::params {
   $agent_key      = undef
   $audit_mode     = false
-  $debug          = false
   $dns            = true
   $installdir     = undef
   $nostart        = false

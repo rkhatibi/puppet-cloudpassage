@@ -4,7 +4,6 @@
 #
 # agent_key       = the agent registration key you use to register the node
 # audit_mode      = Controls the Halo Agent's "read-only" attribute
-# debug           = Set Halo agent into debug mode
 # destination_dir = (Windows only) Controls where we'll download the installer EXE
 # dns             = Controls DNS resolution
 # installdir      = The directory into which to install the agent
@@ -25,7 +24,6 @@
 class cloudpassage(
   $agent_key       = $::cloudpassage::params::agent_key,
   $audit_mode      = $::cloudpassage::params::audit_mode,
-  $debug           = $::cloudpassage::params::debug,
   $destination_dir = $::cloudpassage::params::destination_dir,
   $dns             = $::cloudpassage::params::dns,
   $installdir      = $::cloudpassage::params::installdir,
@@ -47,7 +45,6 @@ class cloudpassage(
 ) inherits ::cloudpassage::params {
   validate_string($agent_key)
   validate_bool($audit_mode)
-  validate_bool($debug)
   validate_bool($dns)
   validate_bool($nostart)
   validate_string($package_ensure)

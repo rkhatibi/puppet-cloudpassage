@@ -23,17 +23,12 @@ class cloudpassage::config {
       $proxy_user_condition = ''
     }
     if ($cloudpassage::proxy_password != undef) {
-      $proxy_password_condition = " --proxy-password=${cloudpassage::proxy_password"
+      $proxy_password_condition = " --proxy-password=${cloudpassage::proxy_password}"
     } else {
       $proxy_password_condition = ''
     }
-    if ($cloudpassage::debug != false) {
-      $debug_condition = " --debug"
-    } else {
-      $debug_condition = ''
-    }
 
-    $configure_command = "${configure}${tag_condition}${server_label_condition}${proxy_condition}${proxy_user_condition}${proxy_password_condition}${debug_condition}"
+    $configure_command = "${configure}${tag_condition}${server_label_condition}${proxy_condition}${proxy_user_condition}${proxy_password_condition}"
 
     exec { 'initialize cloudpassage':
       command     => $configure_command,
