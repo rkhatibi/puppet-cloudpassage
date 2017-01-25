@@ -8,15 +8,27 @@ class cloudpassage::install {
       }
     }
 
-    package { $cloudpassage::package_name:
-      ensure            => ">=$cloudpassage::package_ensure",
-      install_options   => [
+    $configure = [
         "/S",
         "/agent-key=$cloudpassage::agent_key",
         "/tag=$cloudpassage::tag",
         "/read-only=$cloudpassage::audit_mode",
-	"/server-label=$cloudpassage::server_label"
-      ],
+        "/server-label=$cloudpassage::server_label",
+        "/DNS=$cloudpassage::dns",
+        "/D=$cloudpassage::installdir",
+        "/NOSTART=$cloudpassage::nostart"
+    ]
+
+    if ($cloudpassage::debug != false) {
+      $configure_command = concat($configure, ["/debug"])
+    } else {
+      $configure_command = $configure
+    }
+
+    package { $cloudpassage::package_name:
+      ensure            => ">=$cloudpassage::package_ensure",
+
+      install_options   => $configure_command,
       source => "$cloudpassage::destination_dir/$cloudpassage::package_file",
       uninstall_options => $cloudpassage::uninstall_options
     }
