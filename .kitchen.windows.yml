@@ -19,7 +19,7 @@ transport:
 
 provisioner:
   name: puppet_apply
-  manifests_path: \\manifests
+  manifests_path: manifests
   modules_path: /etc/puppetlabs/code/modules
   require_chef_for_busser: false
 
@@ -31,7 +31,7 @@ platforms:
 suites:
   - name: default
     provisioner:
-      manifests: \\site_windows.pp
+      manifests: site.pp
       custom_facts:
         halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
 
