@@ -43,8 +43,8 @@ platforms:
 
 suites:
   - name: default
-    manifest: /source/manifests/site_linux.pp
     provisioner:
+      manifest: /source/manifests/site_linux.pp
       custom_facts:
         halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
 
