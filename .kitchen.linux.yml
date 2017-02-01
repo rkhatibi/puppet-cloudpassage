@@ -20,7 +20,7 @@ transport:
 provisioner:
   name: puppet_apply
   manifests_path: manifests
-  modules_path: /Users/hlee/.puppetlabs/etc/code/modules
+  modules_path: /etc/puppetlabs/code/modules
   require_chef_for_busser: false
 
 platforms:
@@ -43,7 +43,7 @@ platforms:
 
 suites:
   - name: default
-    manifest: /Users/hlee/official_toolbox/puppet-cloudpassage/manifests/site_linux.pp
+    manifest: /source/manifests/site_linux.pp
     provisioner:
       custom_facts:
         halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
