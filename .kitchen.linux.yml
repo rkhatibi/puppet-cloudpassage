@@ -1,0 +1,55 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: <%= ENV['KITCHEN_AWS_SSH_KEY_ID'] %>
+  region: <%= ENV['KITCHEN_AWS_REGION'] %>
+  availability_zone: <%= ENV['KITCHEN_AWS_REGION_ZONE'] %>
+  require_chef_omnibus: true
+  subnet_id: <%= ENV['KITCHEN_AWS_SUBNET_ID'] %>
+  instance_type: <%= ENV['KITCHEN_EC2_INSTANCE_TYPE'] %>
+  associate_public_ip: <%= ENV['KITCHEN_EC2_PUBLIC_IP'] %>
+  security_group_ids: <%= ENV['KITCHEN_EC2_SECURITY_GROUP_IDS'] %>
+  interface: <%= ENV['KITCHEN_EC2_INTERFACE'] %>
+  retryable_tries: 120
+
+transport:
+  ssh_key: <%= ENV['KITCHEN_AWS_KEY_FILE'] %>
+  connection_timeout: 10
+  connection_retries:
+
+provisioner:
+  name: puppet_apply
+  manifests_path: manifests
+  modules_path: /Users/hlee/.puppetlabs/etc/code/modules
+  install_custom_facts: true
+  custom_facts:
+    halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
+  # { HALO_AGENT_KEY: <%= ENV['HALO_AGENT_KEY'] %> }
+  facter_file: /Users/hlee/official_toolbox/puppet-cloudpassage/facter.yml
+  require_chef_for_busser: false
+
+platforms:
+  - name: ubuntu-14.04
+    driver:
+      image_id: <%= ENV['UBUNTU_14_AMI_ID'] %>
+      # image_id: ami-5189a661
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['UBUNTU_14_USER'] %>
+      # username: ubuntu
+  # - name: amzn-2015.09
+  #   driver:
+  #     image_id: <%= ENV['AMZN_LIN_2016_09_AMI_ID'] %>
+  #     # image_id: ami-775e4f16
+  #     user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+  #   transport:
+  #     username: <%= ENV['AMZN_LIN_2016_09_USER'] %>
+  #     # username: ec2-user
+
+suites:
+  - name: default
+    manifest: /Users/hlee/official_toolbox/puppet-cloudpassage/manifests/site.pp
+    provisioner:
+      custom_facts:
+        halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
+
