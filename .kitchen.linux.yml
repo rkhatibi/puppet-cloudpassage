@@ -21,11 +21,6 @@ provisioner:
   name: puppet_apply
   manifests_path: manifests
   modules_path: /Users/hlee/.puppetlabs/etc/code/modules
-  install_custom_facts: true
-  custom_facts:
-    halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
-  # { HALO_AGENT_KEY: <%= ENV['HALO_AGENT_KEY'] %> }
-  facter_file: /Users/hlee/official_toolbox/puppet-cloudpassage/facter.yml
   require_chef_for_busser: false
 
 platforms:
@@ -48,7 +43,7 @@ platforms:
 
 suites:
   - name: default
-    manifest: /Users/hlee/official_toolbox/puppet-cloudpassage/manifests/site.pp
+    manifest: /Users/hlee/official_toolbox/puppet-cloudpassage/manifests/site_linux.pp
     provisioner:
       custom_facts:
         halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>

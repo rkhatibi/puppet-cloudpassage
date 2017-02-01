@@ -15,7 +15,7 @@ driver:
 transport:
   ssh_key: <%= ENV['KITCHEN_AWS_KEY_FILE'] %>
   connection_timeout: 10
-  connection_retries:
+  connection_retries: 5
 
 provisioner:
   name: puppet_apply
@@ -31,4 +31,8 @@ platforms:
 suites:
   - name: default
     manifest: /Users/hlee/official_toolbox/puppet-cloudpassage/manifests/site_windows.pp
+    provisioner:
+      custom_facts:
+        halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
+
 
