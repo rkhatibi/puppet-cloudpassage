@@ -24,4 +24,9 @@ RUN gem install puppet
 RUN gem install kitchen-puppet
 RUN gem install kitchen-ec2
 
+RUN puppet module install puppetlabs/apt
+RUN puppet module install puppet/download_file
+RUN puppet module install puppetlabs/powershell
+RUN puppet module install puppetlabs/stdlib
+
 CMD rake integration:linux
