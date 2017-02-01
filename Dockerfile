@@ -29,5 +29,4 @@ RUN puppet module install puppet/download_file
 RUN puppet module install puppetlabs/powershell
 RUN puppet module install puppetlabs/stdlib
 
-CMD rake integration:linux
-CMD rake integration:windows
+CMD rake integration:linux && rake integration:windows
