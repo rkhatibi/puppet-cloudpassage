@@ -1,4 +1,8 @@
-# Cloudpassage
+![CloudPassage Logo](https://www.cloudpassage.com/wp-content/themes/cloudpassage-2015/images/logo.svg)
+
+# Cloudpassage Puppet
+
+Feedback/Support: support@cloudpassage.com
 
 #### Table of Contents
 
