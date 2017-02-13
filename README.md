@@ -25,7 +25,7 @@ class { 'cloudpassage':
 }
 ```
 
-### Example for Windows servers 
+### Example for Windows servers
 
 ```
 class { 'cloudpassage':
@@ -48,12 +48,14 @@ class { 'cloudpassage':
 
 #### Private classes
 
+```
 * cloudpassage::params: Handles the module's params and sets defaults.
 * cloudpassage::install: Handles the packages.
 * cloudpassage::config: Configures the cphalo daemon on installation.
 * cloudpassage::service: Handles the cphalod service.
 * cloudpassage::yum: Manages the cloudpassage yum repo where applicable.
 * cloudpassage::apt: Manages the cloudpassage apt repo where applicable.
+```
 
 ### Parameters
 
@@ -107,6 +109,22 @@ Unique identifer of the VM
 
 The CloudPassage tags that this node will be configured with. If nothing is provided
 will not include --tags in the agent registration process (default set to undef)
+
+#### `proxy`
+
+Proxing settings. To configure the agent to use an outbound pro
+
+#### `proxy_user`
+
+Proxy username
+
+#### `proxy_password`
+
+Proxy password
+
+### `dns`
+
+Controls DNS resolution (True | False)
 
 ## Limitations
 
