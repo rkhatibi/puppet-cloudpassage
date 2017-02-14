@@ -39,6 +39,7 @@ class { 'cloudpassage':
 
 ### Example for Windows servers
 
+
 ```
 class { 'cloudpassage':
          agent_key => 'myagentkey',
