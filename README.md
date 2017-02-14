@@ -19,7 +19,15 @@ The cloudpassage module installs and configures the CloudPassage Halo agent.
 
 ## Usage
 
-All interaction with the cloudpassage module can be done through the main cloudpassage class in manifest. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
+### Download CloudPassage Puppet Module to Puppet Master
+
+```
+cd /etc/puppetlabs/code/environments/production/modules
+git clone https://github.com/cloudpassage/puppet-cloudpassage.git
+mv puppet-cloudpassage cloudpassage 
+```
+
+All interaction with the cloudpassage module can be done through the main cloudpassage class in the manifest (/etc/puppetlabs/code/environments/production/manifests) on Pupper Master. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
 
 ### Example for Linux servers
 
