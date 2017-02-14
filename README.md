@@ -1,4 +1,8 @@
-# Cloudpassage
+![CloudPassage Logo](https://www.cloudpassage.com/wp-content/themes/cloudpassage-2015/images/logo.svg)
+
+# Cloudpassage Puppet
+
+Feedback/Support: support@cloudpassage.com
 
 #### Table of Contents
 
@@ -15,7 +19,15 @@ The cloudpassage module installs and configures the CloudPassage Halo agent.
 
 ## Usage
 
-All interaction with the cloudpassage module can be done through the main cloudpassage class in manifest. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
+### Download CloudPassage Puppet Module to Puppet Master
+
+```
+cd /etc/puppetlabs/code/environments/production/modules
+git clone https://github.com/cloudpassage/puppet-cloudpassage.git
+mv puppet-cloudpassage cloudpassage 
+```
+
+All interaction with the cloudpassage module can be done through the main cloudpassage class in the manifest (/etc/puppetlabs/code/environments/production/manifests) on Pupper Master. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
 
 ### Example for Linux servers
 
@@ -25,7 +37,8 @@ class { 'cloudpassage':
 }
 ```
 
-### Example for Windows servers 
+### Example for Windows servers
+
 
 ```
 class { 'cloudpassage':
@@ -48,12 +61,14 @@ class { 'cloudpassage':
 
 #### Private classes
 
+```
 * cloudpassage::params: Handles the module's params and sets defaults.
 * cloudpassage::install: Handles the packages.
 * cloudpassage::config: Configures the cphalo daemon on installation.
 * cloudpassage::service: Handles the cphalod service.
 * cloudpassage::yum: Manages the cloudpassage yum repo where applicable.
 * cloudpassage::apt: Manages the cloudpassage apt repo where applicable.
+```
 
 ### Parameters
 
@@ -107,6 +122,22 @@ Unique identifer of the VM
 
 The CloudPassage tags that this node will be configured with. If nothing is provided
 will not include --tags in the agent registration process (default set to undef)
+
+#### `proxy`
+
+Proxing settings. To configure the agent to use an outbound pro
+
+#### `proxy_user`
+
+Proxy username
+
+#### `proxy_password`
+
+Proxy password
+
+### `dns`
+
+Controls DNS resolution (True | False)
 
 ## Limitations
 
