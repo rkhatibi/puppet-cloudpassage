@@ -1,11 +1,7 @@
 require 'puppetlabs_spec_helper/rake_tasks'
-# gem 'rubocop', '~>0.34.2'
-# gem 'foodcritic', '~>5.0.0'
 gem 'test-kitchen', '~>1.15.0'
 require 'rake'
 require 'rspec'
-# require 'rubocop'
-# require 'foodcritic'
 
 namespace :integration do
   require 'kitchen/cli'
