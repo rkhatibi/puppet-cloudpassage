@@ -1,6 +1,6 @@
 {
   "name": "cloudpassage-cloudpassage",
-  "version": "1.0",
+  "version": "1.0.0",
   "author": "CloudPassage",
   "license": "Apache-2.0",
   "summary": "Module that will manage the CloudPassage Halo Agent",
