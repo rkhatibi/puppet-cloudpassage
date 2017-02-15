@@ -7,7 +7,7 @@
   "source": "https://github.com/cloudpassage/puppet-cloudpassage.git",
   "project_page": "https://github.com/cloudpassage/puppet-cloudpassage",
   "issues_url": "https://github.com/cloudpassage/puppet-cloudpassage/issues",
-  "tags": ["windows", "linux", "cloudpassage", "halo"],
+  "tags": ["cloudpassage", "halo"],
   "dependencies": [
     {
       "name": "puppetlabs/apt",
