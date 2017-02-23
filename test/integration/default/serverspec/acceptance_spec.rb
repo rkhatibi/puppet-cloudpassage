@@ -25,7 +25,7 @@ end
 
 describe 'CloudPassage Halo agent for Windows' do
   if os[:family] == 'windows'
-    progfiles = ENV['PROGRAMW6432']
+    progfiles = 'C:\Program Files'
     it 'is installed' do
       expect(package('CloudPassage Halo')).to be_installed
     end

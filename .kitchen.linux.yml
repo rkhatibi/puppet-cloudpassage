@@ -48,3 +48,6 @@ suites:
       custom_facts:
         halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
 
+busser:
+  ruby_bindir: /usr/bin
+
