@@ -42,7 +42,7 @@ platforms:
       # username: ec2-user
 
 suites:
-  - name: default
+  - name: linux
     provisioner:
       manifest: site_linux.pp
       custom_facts:

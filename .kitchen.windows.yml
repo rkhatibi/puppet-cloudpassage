@@ -29,7 +29,7 @@ platforms:
       image_id: <%= ENV['WIN_2012_R2_AMI_ID'] %>
     # image_id: ami-83a5bce2
 suites:
-  - name: default
+  - name: windows
     provisioner:
       manifests: site.pp
       custom_facts:
