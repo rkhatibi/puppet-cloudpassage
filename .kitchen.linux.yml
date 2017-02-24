@@ -21,7 +21,7 @@ provisioner:
   name: puppet_apply
   manifests_path: manifests
   modules_path: /etc/puppetlabs/code/modules
-  require_chef_for_busser: false
+  require_chef_for_busser: true
 
 platforms:
   - name: ubuntu-14.04
@@ -47,7 +47,3 @@ suites:
       manifest: site_linux.pp
       custom_facts:
         halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>
-
-busser:
-  ruby_bindir: /usr/bin
-

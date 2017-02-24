@@ -7,6 +7,7 @@ group :test do
   gem 'puppetlabs_spec_helper'
   gem 'rspec-puppet'
   gem 'serverspec'
+  gem 'kitchen-pester'
 end
 
 group :development do
