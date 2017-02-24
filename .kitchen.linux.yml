@@ -27,19 +27,15 @@ platforms:
   - name: ubuntu-14.04
     driver:
       image_id: <%= ENV['UBUNTU_14_AMI_ID'] %>
-      # image_id: ami-5189a661
       user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
     transport:
       username: <%= ENV['UBUNTU_14_USER'] %>
-      # username: ubuntu
-  - name: amzn-2015.09
+  - name: rhel-7.3
     driver:
-      image_id: <%= ENV['AMZN_LIN_2016_09_AMI_ID'] %>
-      # image_id: ami-775e4f16
+      image_id: <%= ENV['RHEL_73_AMI_ID'] %>
       user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
     transport:
-      username: <%= ENV['AMZN_LIN_2016_09_USER'] %>
-      # username: ec2-user
+      username: <%= ENV['RHEL_73_USER'] %>
 
 suites:
   - name: linux
