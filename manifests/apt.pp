@@ -5,7 +5,7 @@ class cloudpassage::apt {
     ensure => $cloudpassage::repo_ensure,
     key    => {
       id     => '29AF0E02ACF0366976105511013FE82585F4BB98',
-      source => 'https://packages.cloudpassage.com/cloudpassage.packages.key',
+      source => 'https://production.packages.cloudpassage.com/cloudpassage.packages.key',
     },
     location => 'http://packages.cloudpassage.com/debian',
     notify   => Exec['apt_update'],
