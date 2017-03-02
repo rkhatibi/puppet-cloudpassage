@@ -61,7 +61,7 @@ class cloudpassage(
     if $manage_repos == true {
       case $::operatingsystem {
         /(?i:debian|ubuntu)/:        { include cloudpassage::apt }
-        /(?i:redhat|centos|fedora)/: { include cloudpassage::yum }
+        /(?i:redhat|centos|fedora|amazon|oracle)/: { include cloudpassage::yum }
         default: {}
       }
     }
