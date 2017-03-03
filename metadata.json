@@ -49,8 +49,27 @@
       ]
     },
     {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Amazon Linux",
+      "operatingsystemrelease": [
+        "2016.09.01",
+      ]
+    },
+    {
+      "operatingsystem": "Oracle",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
       "operatingsystem": "windows",
       "operatingsystemrelease": [
+        "2008R2",
         "2012R2"
       ]
     }
