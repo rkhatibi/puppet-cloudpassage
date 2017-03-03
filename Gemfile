@@ -8,6 +8,7 @@ group :test do
   gem 'rspec-puppet'
   gem 'serverspec'
   gem 'kitchen-pester'
+  gem 'test-kitchen', '1.15.0'
 end
 
 group :development do
