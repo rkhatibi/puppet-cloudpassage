@@ -3,6 +3,7 @@
 #### Table of Contents
 
 1. [Overview](#overview)
+1. [Setup](#setup)
 1. [Usage](#usage)
 1. [Reference](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -12,6 +13,10 @@
 ## Overview
 
 The cloudpassage module installs and configures the CloudPassage Halo agent.
+
+## Setup
+
+There is no extra setup required.
 
 ## Usage
 
