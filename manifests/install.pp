@@ -21,7 +21,7 @@ class cloudpassage::install {
         "/DNS=${cloudpassage::dns}",
         "/D=${cloudpassage::installdir}",
       ],
-      source            => "${cloudpassage::destination_dir/$cloudpassage::package_file}",
+      source            => "${cloudpassage::destination_dir}/${cloudpassage::package_file}",
       uninstall_options => $cloudpassage::uninstall_options
     }
   } else {
