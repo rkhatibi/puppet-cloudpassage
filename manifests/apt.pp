@@ -1,9 +1,10 @@
+# apt repo configurations
 class cloudpassage::apt {
   include ::apt
 
   apt::source { 'cloudpassage':
-    ensure => $cloudpassage::repo_ensure,
-    key    => {
+    ensure   => $cloudpassage::repo_ensure,
+    key      => {
       id     => '29AF0E02ACF0366976105511013FE82585F4BB98',
       source => 'https://production.packages.cloudpassage.com/cloudpassage.packages.key',
     },
