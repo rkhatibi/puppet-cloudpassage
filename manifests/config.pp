@@ -1,10 +1,7 @@
 # cloudpassage agent parameters
 class cloudpassage::config {
   if $::kernel != 'windows' {
-    $configure = '/opt/cloudpassage/bin/configure'\
-    "--agent-key=${cloudpassage::agent_key}"\
-    "--read-only=${cloudpassage::audit_mode}"\
-    "--dns=${cloudpassage::dns}"
+    $configure = "/opt/cloudpassage/bin/configure --agent-key=${cloudpassage::agent_key} --read-only=${cloudpassage::audit_mode} --dns=${cloudpassage::dns}"
 
     if ($cloudpassage::tag != undef) {
       $tag_condition = " --tag=${cloudpassage::tag}"
@@ -32,9 +29,7 @@ class cloudpassage::config {
       $proxy_password_condition = ''
     }
 
-    $configure_command = "${configure}${tag_condition}"\
-    "${server_label_condition}${proxy_condition}"\
-    "${proxy_user_condition}${proxy_password_condition}"
+    $configure_command = "${configure}${tag_condition}${server_label_condition}${proxy_condition}${proxy_user_condition}${proxy_password_condition}"
 
     exec { 'initialize cloudpassage':
       command     => $configure_command,
