@@ -5,11 +5,18 @@ require 'rspec'
 
 namespace :integration do
   require 'kitchen/cli'
-  task :linux do
-    desc 'Run kitchen-linux tests'
-    ENV['KITCHEN_YAML'] = '.kitchen.linux.yml'
+  task :ubuntu14 do
+    desc 'Run ubuntu14 kitchen-test'
+    ENV['KITCHEN_YAML'] = '.kitchen.ubuntu14.yml'
     Kitchen::CLI.new([], concurrency: 2, destroy: 'always').test
   end
+
+  task :rhel73 do
+    desc 'Run rhel73 kitchen-test'
+    ENV['KITCHEN_YAML'] = '.kitchen.rhel73.yml'
+    Kitchen::CLI.new([], concurrency: 2, destroy: 'always').test
+  end
+
   task :windows do
     desc 'Run kitchen-windows tests'
     ENV['KITCHEN_YAML'] = '.kitchen.windows.yml'

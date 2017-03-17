@@ -1,6 +1,8 @@
 FROM ubuntu:16.04
 MAINTAINER toolbox@cloudpassage.com
 
+ARG TASK
+
 RUN \
   apt-get update -y && \
   apt-get upgrade -y && \
@@ -29,4 +31,4 @@ RUN puppet module install puppet/download_file
 RUN puppet module install puppetlabs/powershell
 RUN puppet module install puppetlabs/stdlib
 
-CMD rake integration:linux && rake integration:windows
+CMD rake integration:$TASK
