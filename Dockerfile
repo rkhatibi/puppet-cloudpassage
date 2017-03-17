@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER toolbox@cloudpassage.com
 
-ARG TASK
+ARG task
 
 RUN \
   apt-get update -y && \
@@ -31,4 +31,4 @@ RUN puppet module install puppet/download_file
 RUN puppet module install puppetlabs/powershell
 RUN puppet module install puppetlabs/stdlib
 
-CMD rake integration:${TASK}
+CMD $task
