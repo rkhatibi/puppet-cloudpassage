@@ -24,12 +24,19 @@ provisioner:
   require_chef_for_busser: true
 
 platforms:
-  - name: ubuntu-14.04
+  - name: oracle6
     driver:
-      image_id: <%= ENV['UBUNTU_14_AMI_ID'] %>
+      image_id: <%= ENV['ORACLE_6_AMI_ID'] %>
       user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
     transport:
-      username: <%= ENV['UBUNTU_14_USER'] %>
+      username: <%= ENV['ORACLE_6_USER'] %>
+  - name: oracle7
+    driver:
+      image_id: <%= ENV['ORACLE_7_AMI_ID'] %>
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['ORACLE_7_USER'] %>
+
 
 suites:
   - name: linux
