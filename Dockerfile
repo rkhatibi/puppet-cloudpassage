@@ -31,4 +31,4 @@ RUN puppet module install puppet/download_file
 RUN puppet module install puppetlabs/powershell
 RUN puppet module install puppetlabs/stdlib
 
-CMD rake integration:$TASK
+CMD rake integration:${TASK}
