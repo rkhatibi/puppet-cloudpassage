@@ -30,6 +30,30 @@ platforms:
       user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
     transport:
       username: <%= ENV['RHEL_73_USER'] %>
+  - name: oracle-6
+    driver:
+      image_id: <%= ENV['ORACLE_6_AMI_ID'] %>
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['ORACLE_6_USER'] %>
+  - name: centos-7
+    driver:
+      image_id: <%= ENV['CENTOS_7_AMI_ID'] %>
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['CENTOS_7_USER'] %>
+  - name: debian-8
+    driver:
+      image_id: <%= ENV['DEBIAN_8_AMI_ID'] %>
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['DEBIAN_8_USER'] %>
+  - name: amazon-linux-20160901
+    driver:
+      image_id: <%= ENV['AMZN_LIN_2016_09_AMI_ID'] %>
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['AMZN_LIN_2016_09_USER'] %>
 
 suites:
   - name: linux

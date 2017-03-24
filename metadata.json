@@ -1,13 +1,13 @@
 {
   "name": "cloudpassage-cloudpassage",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "author": "CloudPassage",
   "license": "Apache-2.0",
   "summary": "Module that will manage the CloudPassage Halo Agent",
   "source": "https://github.com/cloudpassage/puppet-cloudpassage.git",
   "project_page": "https://github.com/cloudpassage/puppet-cloudpassage",
   "issues_url": "https://github.com/cloudpassage/puppet-cloudpassage/issues",
-  "tags": ["windows", "linux", "cloudpassage", "halo"],
+  "tags": ["cloudpassage", "halo"],
   "dependencies": [
     {
       "name": "puppetlabs/apt",

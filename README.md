@@ -1,8 +1,4 @@
-![CloudPassage Logo](https://www.cloudpassage.com/wp-content/themes/cloudpassage-2015/images/logo.svg)
-
 # Cloudpassage Puppet
-
-Feedback/Support: support@cloudpassage.com
 
 #### Table of Contents
 
@@ -152,6 +148,19 @@ This module uses the [puppetlabs-apt module](https://forge.puppet.com/puppetlabs
 repository, [puppetlabs-stdlib module] and [puppetlabs-powershell module]
 
 For Windows installations, this module uses the [puppet-download_file module](https://forge.puppet.com/puppet/download_file) to download the necessary installers.
+
+## Development
+
+We welcome contributions to this module from the Puppet community - the preferred way would be to send a pull request to the module repo on GitHub (https://github.com/cloudpassage/puppet-cloudpassage). Bonus points if you follow this process: 
+
+1. Fork the module on github
+1. pull it down
+1. run the acceptance tests included in the module
+1. make your changes
+1. add spec tests to test your changes
+1. then submit a pull request
+
+This module is regularly reviewed and maintained by the CloudPassage integrations team. For any feedback, questions or support issues, please contact support@cloudpassage.com.
 
 <!---
 #CPTAGS:community-unsupported automation deployment
