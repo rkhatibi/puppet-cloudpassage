@@ -20,8 +20,10 @@ transport:
 provisioner:
   name: puppet_apply
   manifests_path: manifests
+  custom_pre_install_command: sudo dpkg --configure -a
   modules_path: /etc/puppetlabs/code/modules
   require_chef_for_busser: true
+  require_puppet_collections: true
 
 platforms:
   - name: ubuntu-12.04
