@@ -1,7 +1,6 @@
 # yum repo configurations
 class cloudpassage::yum {
   yumrepo { 'cloudpassage':
-    ensure   => $cloudpassage::repo_ensure,
     baseurl  => "http://packages.cloudpassage.com/redhat/${::basearch}",
     descr    => 'CloudPassage',
     gpgcheck => 1,
