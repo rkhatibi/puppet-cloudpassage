@@ -26,7 +26,7 @@ class cloudpassage::install {
     }
   } else {
     package { $cloudpassage::package_name:
-      ensure => 'latest'
+      ensure => $cloudpassage::package_ensure,
     }
   }
 }
