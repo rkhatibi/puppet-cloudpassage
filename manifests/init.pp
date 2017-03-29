@@ -63,6 +63,6 @@ class cloudpassage(
     Class['cloudpassage::service'] ~> Class['cloudpassage::install']
   } else {
     include cloudpassage::install, cloudpassage::config, cloudpassage::service
-    Class['cloudpassage::install'] ~> Class['cloudpassage::config'] ~> Class['cloudpassage::service']
+    Class['cloudpassage::install'] ~> Class['cloudpassage::config'] -> Class['cloudpassage::service']
   }
 }
