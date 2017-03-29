@@ -1,6 +1,6 @@
 # Installation for windows and linux
 class cloudpassage::install {
-  if $::kernel == 'Windows' {
+  if $facts['kernel'] == 'Windows' {
     if $cloudpassage::package_ensure != 'absent' {
       download_file { 'Get cphalo.exe':
         destination_directory => $cloudpassage::destination_dir,
