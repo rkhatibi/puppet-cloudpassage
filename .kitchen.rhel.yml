@@ -30,7 +30,6 @@ platforms:
       user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
     transport:
       username: <%= ENV['RHEL_73_USER'] %>
-
 suites:
   - name: linux
     provisioner:
