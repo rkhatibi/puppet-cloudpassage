@@ -22,6 +22,7 @@ provisioner:
   manifests_path: manifests
   modules_path: /etc/puppetlabs/code/modules
   require_chef_for_busser: true
+  require_puppet_collections: true
 
 platforms:
   - name: oracle6
