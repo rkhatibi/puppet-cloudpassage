@@ -22,54 +22,35 @@
 # tag             = facts or values to use as tags for this node, if empty, tags will not be set
 
 class cloudpassage(
-  $agent_key       = $::cloudpassage::params::agent_key,
-  $audit_mode      = $::cloudpassage::params::audit_mode,
-  $destination_dir = $::cloudpassage::params::destination_dir,
-  $dns             = $::cloudpassage::params::dns,
-  $installdir      = $::cloudpassage::params::installdir,
-  $manage_repos    = $::cloudpassage::params::manage_repos,
-  $package_ensure  = $::cloudpassage::params::package_ensure,
-  $package_file    = $::cloudpassage::params::package_file,
-  $package_name    = $::cloudpassage::params::package_name,
-  $package_url     = $::cloudpassage::params::package_url,
-  $proxy           = $::cloudpassage::params::proxy,
-  $proxy_user      = $::cloudpassage::params::proxy_user,
-  $proxy_password  = $::cloudpassage::params::proxy_password,
-  $repo_ensure     = $::cloudpassage::params::repo_ensure,
-  $service_enable  = $::cloudpassage::params::service_enable,
-  $service_ensure  = $::cloudpassage::params::service_ensure,
-  $service_name    = $::cloudpassage::params::service_name,
-  $server_label    = $::cloudpassage::params::server_label,
-  $tag             = $::cloudpassage::params::tag
+  String $agent_key                       = $::cloudpassage::params::agent_key,
+  Boolean $audit_mode                     = $::cloudpassage::params::audit_mode,
+  Variant[String, Undef] $installdir      = $::cloudpassage::params::installdir,
+  Variant[String, Undef] $destination_dir = $::cloudpassage::params::destination_dir,
+  Boolean $dns                            = $::cloudpassage::params::dns,
+  Boolean $manage_repos                   = $::cloudpassage::params::manage_repos,
+  String $package_ensure                  = $::cloudpassage::params::package_ensure,
+  Variant[String, Undef] $package_file    = $::cloudpassage::params::package_file,
+  Variant[String, Undef] $package_name    = $::cloudpassage::params::package_name,
+  Variant[String, Undef] $package_url     = $::cloudpassage::params::package_url,
+  Variant[String, Undef] $proxy           = $::cloudpassage::params::proxy,
+  Variant[String, Undef] $proxy_user      = $::cloudpassage::params::proxy_user,
+  Variant[String, Undef] $proxy_password  = $::cloudpassage::params::proxy_password,
+  Variant[String, Undef] $repo_ensure     = $::cloudpassage::params::repo_ensure,
+  Boolean $service_enable                 = $::cloudpassage::params::service_enable,
+  Boolean $service_ensure                 = $::cloudpassage::params::service_ensure,
+  Variant[String, Undef] $service_name    = $::cloudpassage::params::service_name,
+  Variant[String, Undef] $server_label    = $::cloudpassage::params::server_label,
+  Variant[String, Undef] $tag             = $::cloudpassage::params::tag
 ) inherits ::cloudpassage::params {
-  validate_string($agent_key)
-  validate_bool($audit_mode)
-  validate_bool($dns)
-  validate_string($package_ensure)
-  validate_string($package_name)
-  validate_string($proxy)
-  validate_string($service_name)
-  validate_bool($service_enable)
-  validate_bool($service_ensure)
-  validate_string($server_label)
-  validate_string($tag)
-
-  if $::kernel == 'Linux' {
-    validate_bool($manage_repos)
-    validate_string($repo_ensure)
-
+  if $facts['kernel'] == 'Linux' {
     if $manage_repos == true {
-      case $::operatingsystem {
+      case $facts['os']['family'] {
         /(?i:debian|ubuntu)/:        { include cloudpassage::apt }
         /(?i:redhat|centos|fedora|amazon|oracle)/: { include cloudpassage::yum }
-        default: {}
+        default: { fail("Unsupported operating system: ${facts['os']['family']}") }
       }
     }
-  } elsif $::kernel == 'windows' {
-    validate_absolute_path($destination_dir)
-    validate_string($package_file)
-    validate_string($package_url)
-
+  } elsif $facts['kernel'] == 'windows' {
     if $package_ensure == 'absent' {
       $uninstall_options = ['/S']
     } else {
@@ -82,6 +63,6 @@ class cloudpassage(
     Class['cloudpassage::service'] ~> Class['cloudpassage::install']
   } else {
     include cloudpassage::install, cloudpassage::config, cloudpassage::service
-    Class['cloudpassage::install'] ~> Class['cloudpassage::config'] ~> Class['cloudpassage::service']
+    Class['cloudpassage::install'] ~> Class['cloudpassage::config'] -> Class['cloudpassage::service']
   }
 }
