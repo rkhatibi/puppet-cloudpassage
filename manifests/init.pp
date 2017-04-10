@@ -22,35 +22,37 @@
 # tag             = facts or values to use as tags for this node, if empty, tags will not be set
 
 class cloudpassage(
-  String $agent_key                       = $::cloudpassage::params::agent_key,
-  Boolean $audit_mode                     = $::cloudpassage::params::audit_mode,
-  Variant[String, Undef] $installdir      = $::cloudpassage::params::installdir,
-  Variant[String, Undef] $destination_dir = $::cloudpassage::params::destination_dir,
-  Boolean $dns                            = $::cloudpassage::params::dns,
-  Boolean $manage_repos                   = $::cloudpassage::params::manage_repos,
-  String $package_ensure                  = $::cloudpassage::params::package_ensure,
-  Variant[String, Undef] $package_file    = $::cloudpassage::params::package_file,
-  Variant[String, Undef] $package_name    = $::cloudpassage::params::package_name,
-  Variant[String, Undef] $package_url     = $::cloudpassage::params::package_url,
-  Variant[String, Undef] $proxy           = $::cloudpassage::params::proxy,
-  Variant[String, Undef] $proxy_user      = $::cloudpassage::params::proxy_user,
-  Variant[String, Undef] $proxy_password  = $::cloudpassage::params::proxy_password,
-  Variant[String, Undef] $repo_ensure     = $::cloudpassage::params::repo_ensure,
-  Boolean $service_enable                 = $::cloudpassage::params::service_enable,
-  Boolean $service_ensure                 = $::cloudpassage::params::service_ensure,
-  Variant[String, Undef] $service_name    = $::cloudpassage::params::service_name,
-  Variant[String, Undef] $server_label    = $::cloudpassage::params::server_label,
-  Variant[String, Undef] $tag             = $::cloudpassage::params::tag
-) inherits ::cloudpassage::params {
+  String $agent_key                       = undef,
+  Boolean $audit_mode                     = false,
+  Variant[String, Undef] $installdir      = undef,
+  Variant[String, Undef] $destination_dir = 'c:/tmp',
+  Boolean $dns                            = true,
+  Boolean $manage_repos                   = true,
+  String $package_ensure                  = 'present',
+  Variant[String, Undef] $package_file    = 'cphalo-3.9.7-win64.exe',
+  Variant[String, Undef] $package_url     = "https://production.packages.cloudpassage.com/windows/${package_file}",
+  Variant[String, Undef] $proxy           = undef,
+  Variant[String, Undef] $proxy_user      = undef,
+  Variant[String, Undef] $proxy_password  = undef,
+  Variant[String, Undef] $repo_ensure     = 'present',
+  Boolean $service_enable                 = true,
+  Boolean $service_ensure                 = true,
+  Variant[String, Undef] $server_label    = undef,
+  Variant[String, Undef] $tag             = undef
+) {
   if $facts['kernel'] == 'Linux' {
+      $package_name = 'cphalo'
+      $service_name = 'cphalod'
     if $manage_repos == true {
       case $facts['os']['family'] {
-        /(?i:debian|ubuntu)/:        { include cloudpassage::apt }
-        /(?i:redhat|centos|fedora|amazon|oracle)/: { include cloudpassage::yum }
+        /(Debian)/:        { include cloudpassage::apt }
+        /(RedHat)/: { include cloudpassage::yum }
         default: { fail("Unsupported operating system: ${facts['os']['family']}") }
       }
     }
   } elsif $facts['kernel'] == 'windows' {
+      $package_name = 'CloudPassage Halo'
+      $service_name = 'cphalo'
     if $package_ensure == 'absent' {
       $uninstall_options = ['/S']
     } else {

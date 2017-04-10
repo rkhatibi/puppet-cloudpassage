@@ -1,6 +1,6 @@
 # cloudpassage agent parameters
 class cloudpassage::config {
-  if $::kernel != 'windows' {
+  if $facts['kernel'] != 'windows' {
     $configure = "/opt/cloudpassage/bin/configure --agent-key=${cloudpassage::agent_key} --read-only=${cloudpassage::audit_mode} --dns=${cloudpassage::dns}"
 
     if ($cloudpassage::tag) {
