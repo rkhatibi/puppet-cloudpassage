@@ -5,7 +5,7 @@ require 'rake'
 require 'rspec'
 
 namespace :spec do
-  require 'rspec/core/rake_tasks'
+  require 'rspec/core/rake_task'
   desc 'Run rspec tests'
   RSpec::Core::RakeTask.new(:spec)
 end
