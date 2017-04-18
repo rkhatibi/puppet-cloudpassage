@@ -1,7 +1,12 @@
 # Cloudpassage Puppet
 
+Author: CloudPassage & Tech Accelerator
+
+Master branch: [![Build Status (develop branch)](https://travis-ci.org/cloudpassage/puppet-cloudpassage.svg?branch=master)](https://travis-ci.org/cloudpassage/puppet-cloudpassage/)
+
 Develop branch: [![Build Status (develop branch)](https://travis-ci.org/cloudpassage/puppet-cloudpassage.svg?branch=develop)](https://travis-ci.org/cloudpassage/puppet-cloudpassage/)
 
+Feedback: toolbox@cloudpassage.com
 #### Table of Contents
 
 1. [Overview](#overview)
