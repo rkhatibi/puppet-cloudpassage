@@ -47,3 +47,5 @@ namespace :integration do
     Kitchen::CLI.new([], concurrency: 4, destroy: 'always').test
   end
 end
+
+task default: [:spec, :lint]
