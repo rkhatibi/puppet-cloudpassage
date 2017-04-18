@@ -1,5 +1,7 @@
 # Cloudpassage Puppet
 
+Develop branch: [![Build Status (develop branch)](https://travis-ci.org/cloudpassage/puppet-cloudpassage.svg?branch=develop)](https://travis-ci.org/cloudpassage/puppet-cloudpassage/)
+
 #### Table of Contents
 
 1. [Overview](#overview)
