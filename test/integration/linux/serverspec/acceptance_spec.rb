@@ -1,5 +1,4 @@
 require 'serverspec'
-require 'spec_helper'
 
 describe 'cloudpassage' do
   agent_key    = "dummykey"
@@ -44,9 +43,9 @@ describe 'cloudpassage' do
     describe "on #{os}" do
       let(:facts) {{ :operatingsystem => os }.merge(facts) }
 
-      it { should contain_class('cloudpassage::install').that_notifies('Class[cloudpassage::config]') }
-      it { should contain_class('cloudpassage::config').that_notifies('Class[cloudpassage::service]') }
-      it { should contain_class('cloudpassage::service') }
+      # it { should contain_class('cloudpassage::install').that_notifies('Class[cloudpassage::config]') }
+      # it { should contain_class('cloudpassage::config').that_notifies('Class[cloudpassage::service]') }
+      # it { should contain_class('cloudpassage::service') }
 
       describe 'cloudpassage::install' do
         if os == 'Windows'
@@ -306,6 +305,4 @@ describe 'cloudpassage' do
       it { should_not compile }
     end
   end
-end
-
 end
