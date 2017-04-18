@@ -55,4 +55,4 @@ namespace :integration do
   end
 end
 
-task default: [:spec, :lint]
+task travis: [:spec, :lint]
