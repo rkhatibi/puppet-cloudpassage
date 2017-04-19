@@ -6,23 +6,28 @@ rvm:
   - 2.2
 script: bundle exec rake travis
 env:
-  - PUPPET_VERSION="~> 3.2.0"
-  - PUPPET_VERSION="~> 3.3.0"
-  - PUPPET_VERSION="~> 3.4.0"
-  - PUPPET_VERSION="~> 3.5.0" STRICT_VARIABLES=yes
-  - PUPPET_VERSION="~> 3.6.0" STRICT_VARIABLES=yes
-  - PUPPET_VERSION="~> 3.7.0" STRICT_VARIABLES=yes
-  - PUPPET_VERSION="~> 3.7.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
-  - PUPPET_VERSION="~> 4.0.0" STRICT_VARIABLES=yes
+  # - PUPPET_VERSION="~> 3.2.0"
+  # - PUPPET_VERSION="~> 3.3.0"
+  # - PUPPET_VERSION="~> 3.4.0"
+  # - PUPPET_VERSION="~> 3.5.0" STRICT_VARIABLES=yes
+  # - PUPPET_VERSION="~> 3.6.0" STRICT_VARIABLES=yes
+  # - PUPPET_VERSION="~> 3.7.0" STRICT_VARIABLES=yes
+  # - PUPPET_VERSION="~> 3.7.0" STRICT_VARIABLES=yes FUTURE_PARSER=yes
+  - PUPPET_VERSION="~> 4.9.0" STRICT_VARIABLES=yes
+  - PUPPET_VERSION="~> 4.9.1" STRICT_VARIABLES=yes
+  - PUPPET_VERSION="~> 4.9.2" STRICT_VARIABLES=yes
+  - PUPPET_VERSION="~> 4.9.3" STRICT_VARIABLES=yes
+  - PUPPET_VERSION="~> 4.9.4" STRICT_VARIABLES=yes
+
 
 sudo: required
 
-matrix:
-  exclude:
-  # Ruby 2.2.4
-  - rvm: 2.2.4
-    env: PUPPET_VERSION="~> 3.2.0"
-  - rvm: 2.2.4
-    env: PUPPET_VERSION="~> 3.3.0"
-  - rvm: 2.2.4
-    env: PUPPET_VERSION="~> 3.4.0"
+# matrix:
+#   exclude:
+#   # Ruby 2.2.4
+#   - rvm: 2.2.4
+#     env: PUPPET_VERSION="~> 3.2.0"
+#   - rvm: 2.2.4
+#     env: PUPPET_VERSION="~> 3.3.0"
+#   - rvm: 2.2.4
+#     env: PUPPET_VERSION="~> 3.4.0"
