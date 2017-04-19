@@ -11,6 +11,7 @@ Feedback: toolbox@cloudpassage.com
 
 1. [Overview](#overview)
 1. [Setup](#setup)
+1. [Requirements and dependencies](#requirements)
 1. [Usage](#usage)
 1. [Reference](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -20,6 +21,28 @@ Feedback: toolbox@cloudpassage.com
 ## Overview
 
 The cloudpassage module installs and configures the CloudPassage Halo agent.
+
+## Requirements and dependencies 
+### Tested and Supported Platforms
+
+ - Ubuntu 14.04
+ - CentOS 6.7
+ - CentOS 7.1
+ - RHEL 7.2
+ - Amazon Linux 2015.09
+ - Windows Server 2012R2
+
+### Tested Ruby version
+ 
+ - 2.2
+ 
+### Tested Puppet versions
+
+ - Puppet 4.9.0 
+ - Puppet 4.9.1 
+ - Puppet 4.9.2 
+ - Puppet 4.9.3 
+ - Puppet 4.9.4
 
 ## Setup
 
