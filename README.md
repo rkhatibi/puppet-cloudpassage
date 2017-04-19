@@ -10,8 +10,8 @@ Feedback: toolbox@cloudpassage.com
 #### Table of Contents
 
 1. [Overview](#overview)
-1. [Setup](#setup)
 1. [Requirements and dependencies](#requirements)
+1. [Setup](#setup)
 1. [Usage](#usage)
 1. [Reference](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -22,7 +22,7 @@ Feedback: toolbox@cloudpassage.com
 
 The cloudpassage module installs and configures the CloudPassage Halo agent.
 
-## Requirements and dependencies 
+## Requirements and dependencies
 ### Tested and Supported Platforms
 
  - Ubuntu 14.04
