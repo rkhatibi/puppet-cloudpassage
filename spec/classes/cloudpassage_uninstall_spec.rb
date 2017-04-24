@@ -68,7 +68,7 @@ describe 'cloudpassage' do
 
             it { should contain_package('CloudPassage Halo')
               .with(
-                "ensure"            => ">=absent",
+                "ensure"            => "absent",
                 "install_options"   => [
                   "/S",
                   "/agent-key=#{agent_key}",
