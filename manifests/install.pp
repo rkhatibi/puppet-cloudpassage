@@ -10,7 +10,7 @@ class cloudpassage::install {
     }
 
     package { $cloudpassage::package_name:
-      ensure            => ">=${cloudpassage::package_ensure}",
+      ensure            => "${cloudpassage::package_ensure}",
 
       install_options   => [
         '/S',
