@@ -1,7 +1,14 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 gem 'test-kitchen', '~>1.15.0'
+gem 'rspec', '>=3.3.0', '<3.5.0'
 require 'rake'
 require 'rspec'
+
+namespace :spec do
+  require 'rspec/core/rake_task'
+  desc 'Run rspec tests'
+  RSpec::Core::RakeTask.new(:spec)
+end
 
 namespace :integration do
   require 'kitchen/cli'
@@ -47,3 +54,5 @@ namespace :integration do
     Kitchen::CLI.new([], concurrency: 4, destroy: 'always').test
   end
 end
+
+task travis: [:spec, :lint]
