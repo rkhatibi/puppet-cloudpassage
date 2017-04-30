@@ -1,6 +1,6 @@
 {
   "name": "cloudpassage-cloudpassage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "CloudPassage",
   "license": "Apache-2.0",
   "summary": "Module that will manage the CloudPassage Halo Agent",
@@ -77,7 +77,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.0.0 < 5.0.0"
+      "version_requirement": ">= 4.9.0 < 5.0.0"
     }
   ]
 }
