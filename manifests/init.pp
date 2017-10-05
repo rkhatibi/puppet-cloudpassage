@@ -20,6 +20,7 @@
 # service_name    = the name of the service
 # server_label    = unique identifer of the VM
 # tag             = facts or values to use as tags for this node, if empty, tags will not be set
+# azure_id        = unique identifer of the VM, combination of id_hostname.
 
 class cloudpassage(
   String $agent_key                       = undef,
@@ -38,7 +39,8 @@ class cloudpassage(
   Boolean $service_enable                 = true,
   Boolean $service_ensure                 = true,
   Variant[String, Undef] $server_label    = undef,
-  Variant[String, Undef] $tag             = undef
+  Variant[String, Undef] $tag             = undef,
+  Variant[String, Undef] $azure_id        = undef
 ) {
   if $facts['kernel'] == 'Linux' {
       $package_name = 'cphalo'

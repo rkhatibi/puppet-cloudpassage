@@ -8,6 +8,12 @@ class cloudpassage::install {
         url                   => $cloudpassage::package_url,
       }
     }
+    if ($cloudpassage::azure_id) and ($cloudpassage::server_label == undef) {
+      $server_label = sprintf('%s_%s', $cloudpassage::azure_id, $facts['hostname'])
+    }
+    if ($cloudpassage::server_label) {
+      $server_label = $cloudpassage::server_label
+    }
 
     package { $cloudpassage::package_name:
       ensure            => $cloudpassage::package_ensure,
@@ -17,7 +23,7 @@ class cloudpassage::install {
         "/agent-key=${cloudpassage::agent_key}",
         "/tag=${cloudpassage::tag}",
         "/read-only=${cloudpassage::audit_mode}",
-        "/server-label=${cloudpassage::server_label}",
+        "/server-label=${server_label}",
         "/DNS=${cloudpassage::dns}",
         "/D=${cloudpassage::installdir}",
       ],
