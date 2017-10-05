@@ -13,6 +13,10 @@ class cloudpassage::config {
     } else {
       $server_label_condition = ''
     }
+    if ($cloudpassage::azure_id) and ($cloudpassage::server_label == undef) {
+      $azure_label = sprintf('%s_%s', $cloudpassage::azure_id, $facts['hostname'])
+      $azure_label_condition = " --server-label=${azure_label}"
+    }
     if ($cloudpassage::proxy) {
       $proxy_condition = " --proxy=${cloudpassage::proxy}"
     } else {
@@ -29,7 +33,7 @@ class cloudpassage::config {
       $proxy_password_condition = ''
     }
 
-    $configure_command = "${configure}${tag_condition}${server_label_condition}${proxy_condition}${proxy_user_condition}${proxy_password_condition}"
+    $configure_command = "${configure}${tag_condition}${server_label_condition}${azure_label_condition}${proxy_condition}${proxy_user_condition}${proxy_password_condition}"
 
     exec { 'initialize cloudpassage':
       command     => $configure_command,
