@@ -110,6 +110,10 @@ The following parameters are available in the `cloudpassage` class:
 
 The CloudPassage Agent key.
 
+#### `azure_id` 
+
+Unique identifer of the VM combined with the hostname. server_label will supersede azure_id if server_label field is populated.
+
 #### `audit_mode`
 
 Controls the Halo Agent's "read-only" attribute
