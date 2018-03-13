@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-gem 'puppet', '4.9.4'
+gem 'puppet', '5.4.0'
 
-group :test do 
-  gem 'puppetlabs_spec_helper' 
+group :test do
+  gem 'puppetlabs_spec_helper'
   gem 'serverspec'
   gem 'kitchen-pester'
   gem 'test-kitchen', '1.15.0'
