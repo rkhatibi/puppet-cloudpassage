@@ -34,16 +34,17 @@ The cloudpassage module installs and configures the CloudPassage Halo agent.
  - Windows Server 2012R2
 
 ### Tested Ruby version
- 
+
  - 2.2
- 
+
 ### Tested Puppet versions
 
- - Puppet 4.9.0 
- - Puppet 4.9.1 
- - Puppet 4.9.2 
- - Puppet 4.9.3 
+ - Puppet 4.9.0
+ - Puppet 4.9.1
+ - Puppet 4.9.2
+ - Puppet 4.9.3
  - Puppet 4.9.4
+ - Puppet 5.4.0
 
 ## Setup
 
@@ -56,7 +57,7 @@ There is no extra setup required.
 ```
 cd /etc/puppetlabs/code/environments/production/modules
 git clone https://github.com/cloudpassage/puppet-cloudpassage.git
-mv puppet-cloudpassage cloudpassage 
+mv puppet-cloudpassage cloudpassage
 ```
 
 All interaction with the cloudpassage module can be done through the main cloudpassage class in the manifest (/etc/puppetlabs/code/environments/production/manifests) on Pupper Master. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
@@ -110,7 +111,7 @@ The following parameters are available in the `cloudpassage` class:
 
 The CloudPassage Agent key.
 
-#### `azure_id` 
+#### `azure_id`
 
 Unique identifer of the VM combined with the hostname. server_label will supersede azure_id if server_label field is populated.
 
@@ -186,7 +187,7 @@ For Windows installations, this module uses the [puppet-download_file module](ht
 
 ## Development
 
-We welcome contributions to this module from the Puppet community - the preferred way would be to send a pull request to the module repo on GitHub (https://github.com/cloudpassage/puppet-cloudpassage). Bonus points if you follow this process: 
+We welcome contributions to this module from the Puppet community - the preferred way would be to send a pull request to the module repo on GitHub (https://github.com/cloudpassage/puppet-cloudpassage). Bonus points if you follow this process:
 
 1. Fork the module on github
 1. pull it down
