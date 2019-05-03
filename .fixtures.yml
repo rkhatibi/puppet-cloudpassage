@@ -1,0 +1,16 @@
+fixtures:
+  forge_modules:
+    apt:
+      ref: '2.3.0'
+      repo: 'puppetlabs/apt'
+    download_file:
+      ref: '2.0.0'
+      repo: 'puppet/download_file'
+    powershell:
+      ref: '2.0.3'
+      repo: 'puppetlabs/powershell'
+    stdlib:
+      ref: '4.13.1'
+      repo: 'puppetlabs/stdlib'
+  symlinks:
+    "cloudpassage": "#{source_dir}"

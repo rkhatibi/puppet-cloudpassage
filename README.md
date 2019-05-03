@@ -1,26 +1,204 @@
-# Cloud Passage module for Puppet
+# Cloudpassage Puppet
 
-## Description
-A Puppet module for managing CloudPassage
+Author: CloudPassage & Tech Accelerator
+
+Master branch: [![Build Status (develop branch)](https://travis-ci.org/cloudpassage/puppet-cloudpassage.svg?branch=master)](https://travis-ci.org/cloudpassage/puppet-cloudpassage/)
+
+Develop branch: [![Build Status (develop branch)](https://travis-ci.org/cloudpassage/puppet-cloudpassage.svg?branch=develop)](https://travis-ci.org/cloudpassage/puppet-cloudpassage/)
+
+Feedback: toolbox@cloudpassage.com
+#### Table of Contents
+
+1. [Overview](#overview)
+1. [Requirements and dependencies](#requirements)
+1. [Setup](#setup)
+1. [Usage](#usage)
+1. [Reference](#reference)
+1. [Limitations - OS compatibility, etc.](#limitations)
+    * [Module dependencies](#module-dependencies)
+1. [Development](#development)
+
+## Overview
+
+The cloudpassage module installs and configures the CloudPassage Halo agent.
 
 ## Requirements
-This module requires a Puppet master of 2.6 or better.
-By default data comes from extlookup which was likely to
-support more users.
+
+### Tested and Supported Platforms
+
+ - Ubuntu 14.04
+ - CentOS 6.7
+ - CentOS 7.1
+ - RHEL 7.2
+ - Amazon Linux 2015.09
+ - Windows Server 2012R2
+
+### Tested Ruby version
+
+ - 2.2
+
+### Tested Puppet versions
+
+ - Puppet 4.9.0
+ - Puppet 4.9.1
+ - Puppet 4.9.2
+ - Puppet 4.9.3
+ - Puppet 4.9.4
+ - Puppet 5.4.0
+
+## Setup
+
+There is no extra setup required.
 
 ## Usage
 
-### setup
-You'll need to plug in your values in cloudpassage/manifests/data.pp
-The module will plug those values in as needed
+### Download CloudPassage Puppet Module to Puppet Master
 
-### include cloudpassage
-installs and starts cphalod
+```
+cd /etc/puppetlabs/code/environments/production/modules
+git clone https://github.com/cloudpassage/puppet-cloudpassage.git
+mv puppet-cloudpassage cloudpassage
+```
 
-### include cloudpassage::service::disable
-installs, but stops the service
+All interaction with the cloudpassage module can be done through the main cloudpassage class in the manifest (/etc/puppetlabs/code/environments/production/manifests) on Pupper Master. Below are example classes for Linux and Windows servers to function. Please see later section for required parameters.
 
-### apt
-You may need to modify to use *your* apt update process
-I didn't add one because it's likely to cause more problems
-than it solves.
+### Example for Linux servers
+
+```
+class { 'cloudpassage':
+  agent_key => 'myagentkey',
+}
+```
+
+### Example for Windows servers
+
+
+```
+class { 'cloudpassage':
+         agent_key => 'myagentkey',
+         package_file => 'cphalo-3.9.7-win64.exe',
+         package_url => 'https://production.packages.cloudpassage.com/windows/cphalo-3.9.7-win64.exe',
+         destination_dir => 'C:\\Users\Administrator\Downloads',
+         server_label => 'puppet_windows',
+         audit_mode => true
+}
+```
+
+## Reference
+
+### Classes
+
+#### Public classes
+
+* cloudpassage: Main class, includes all other classes.
+
+#### Private classes
+
+```
+* cloudpassage::params: Handles the module's params and sets defaults.
+* cloudpassage::install: Handles the packages.
+* cloudpassage::config: Configures the cphalo daemon on installation.
+* cloudpassage::service: Handles the cphalod service.
+* cloudpassage::yum: Manages the cloudpassage yum repo where applicable.
+* cloudpassage::apt: Manages the cloudpassage apt repo where applicable.
+```
+
+### Parameters
+
+The following parameters are available in the `cloudpassage` class:
+
+#### `agent_key` (Required)
+
+The CloudPassage Agent key.
+
+#### `azure_id`
+
+Unique identifer of the VM combined with the hostname. server_label will supersede azure_id if server_label field is populated.
+
+#### `audit_mode`
+
+Controls the Halo Agent's "read-only" attribute
+
+#### `destination_dir` (Windows only)
+
+Controls where we'll download the installer EXE
+
+#### `manage_repos` (Linux only)
+
+Set to true by default, will add cloudpassage package repo for install
+
+#### `package_ensure`
+
+Controls the package resource's "ensure" attribute
+
+#### `package_file` (Windows only)
+
+Controls the filename of the installer EXE
+
+#### `package_name`
+
+Controls the package resource's "name" attribute
+
+#### `package_url` (Windows only)
+
+Base URL from which we'll download the installer EXE
+
+#### `repo_ensure` (Linux only)
+
+Controls the apt or yum repo's "ensure" attribute
+
+#### `service_name`
+
+The name of the service
+
+#### `server_label`
+
+Unique identifer of the VM
+
+#### `tags`
+
+The CloudPassage tags that this node will be configured with. If nothing is provided
+will not include --tags in the agent registration process (default set to undef)
+
+#### `proxy`
+
+Proxing settings. To configure the agent to use an outbound pro
+
+#### `proxy_user`
+
+Proxy username
+
+#### `proxy_password`
+
+Proxy password
+
+### `dns`
+
+Controls DNS resolution (True | False)
+
+## Limitations
+
+### Module dependencies
+
+This module uses the [puppetlabs-apt module](https://forge.puppet.com/puppetlabs/apt) for the management of the NodeSource
+repository, [puppetlabs-stdlib module] and [puppetlabs-powershell module]
+
+For Windows installations, this module uses the [puppet-download_file module](https://forge.puppet.com/puppet/download_file) to download the necessary installers.
+
+## Development
+
+We welcome contributions to this module from the Puppet community - the preferred way would be to send a pull request to the module repo on GitHub (https://github.com/cloudpassage/puppet-cloudpassage). Bonus points if you follow this process:
+
+1. Fork the module on github
+1. pull it down
+1. run the acceptance tests included in the module
+1. make your changes
+1. add spec tests to test your changes
+1. then submit a pull request
+
+This module is regularly reviewed and maintained by the CloudPassage integrations team. For any feedback, questions or support issues, please contact support@cloudpassage.com.
+
+<!---
+#CPTAGS:community-unsupported automation deployment
+#TBICON:images/ruby_icon.png
+-->

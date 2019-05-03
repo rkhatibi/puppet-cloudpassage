@@ -1,0 +1,41 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: <%= ENV['KITCHEN_AWS_SSH_KEY_ID'] %>
+  region: <%= ENV['KITCHEN_AWS_REGION'] %>
+  availability_zone: <%= ENV['KITCHEN_AWS_REGION_ZONE'] %>
+  require_chef_omnibus: true
+  subnet_id: <%= ENV['KITCHEN_AWS_SUBNET_ID'] %>
+  instance_type: <%= ENV['KITCHEN_EC2_INSTANCE_TYPE'] %>
+  associate_public_ip: <%= ENV['KITCHEN_EC2_PUBLIC_IP'] %>
+  security_group_ids: <%= ENV['KITCHEN_EC2_SECURITY_GROUP_IDS'] %>
+  interface: <%= ENV['KITCHEN_EC2_INTERFACE'] %>
+  retryable_tries: 120
+
+transport:
+  ssh_key: <%= ENV['KITCHEN_AWS_KEY_FILE'] %>
+  connection_timeout: 10
+  connection_retries:
+
+provisioner:
+  name: puppet_apply
+  manifests_path: manifests
+  modules_path: /etc/puppetlabs/code/modules
+  require_chef_for_busser: true
+  require_puppet_collections: true
+
+platforms:
+  - name: oracle6
+    driver:
+      image_id: <%= ENV['ORACLE_6_AMI_ID'] %>
+      user_data: <%= ENV['KITCHEN_EC2_USER_DATA'] %>
+    transport:
+      username: <%= ENV['ORACLE_6_USER'] %>
+
+
+suites:
+  - name: linux
+    provisioner:
+      manifest: site_linux.pp
+      custom_facts:
+        halo_agent_key: <%= ENV['HALO_AGENT_KEY'] %>

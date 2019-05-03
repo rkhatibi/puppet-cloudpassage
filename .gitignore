@@ -1,0 +1,9 @@
+.bundle
+.ruby-gemset
+.ruby-version
+
+spec/fixtures/manifests
+spec/fixtures/modules
+spec/fixtures/module-working-dir
+
+vendor
